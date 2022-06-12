@@ -80,6 +80,10 @@ output
 
 PANEL_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/install-panel.sh"
 
+IPV6_PANEL_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/ipv6-panel-install.sh"
+
+IPV6_WINGS_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/ipv6-wings-install.sh"
+
 WINGS_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/install-wings.sh"
 
 PANEL_CANARY="$GITHUB_BASE_URL/master/install-panel.sh"
@@ -94,7 +98,10 @@ while [ "$done" == false ]; do
 
     "Install panel with canary version of the script (the versions that lives in master, may be broken!)"
     "Install Wings with canary version of the script (the versions that lives in master, may be broken!)"
-    "Install both [3] and [4] on the same machine (wings script runs after panel)"
+    "Install both [3] and [4] on the same machine (wings script runs after panel)\n"
+    
+    "Install the panel(IPV6 ONLY SYSTEMS)"
+    "Install the wings(IPV6 ONLY SYSTEMS)"
   )
 
   actions=(
@@ -105,6 +112,9 @@ while [ "$done" == false ]; do
     "$PANEL_CANARY"
     "$WINGS_CANARY"
     "$PANEL_CANARY;$WINGS_CANARY"
+    
+    "$IPV6_PANEL_LATEST"
+    "$IPV6_WINGS_LATEST
   )
 
   output "What would you like to do?"
