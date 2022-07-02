@@ -1040,7 +1040,14 @@ main() {
   fi
 
   # verify FQDN if user has selected to assume SSL or configure Let's Encrypt
-  [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && bash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
+  [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && dns_verify() {
+  output "Resolving DNS for $FQDN"
+  ip=$(curl -6 -s checkip.pterodactyl-installer.se)
+  dns_record=$(dig +short @8.8.8.8 "$FQDN" | tail -n1)
+  [ "${ip}" != "${dns_record}" ] && fail
+  output "DNS verified!"
+}
+
 
   # summary
   summary
