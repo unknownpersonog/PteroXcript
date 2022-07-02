@@ -88,7 +88,7 @@ confirm() {
 
 dns_verify() {
   output "Resolving DNS for $fqdn"
-  ip=$(dig -t aaaa +short myip.opendns.com @resolver1.opendns.com)
+  ip=$(curl -sL checkip.pterodactyl-installer.se)
   dns_record=$(dig +short @$DNS_SERVER "$fqdn" | tail -n1)
   [ "${ip}" != "${dns_record}" ] && fail
   output "DNS verified!"
