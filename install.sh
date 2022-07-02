@@ -31,17 +31,17 @@ set -e
 SCRIPT_VERSION="v0.11.0"
 GITHUB_BASE_URL="https://raw.githubusercontent.com/unknownpersonog/pteroscript"
 
-LOG_PATH="/var/log/pteroscript.log"
+LOG_PATH="/var/log/pterodactyl-installer.log"
 
 # exit with error status code if user is not root
 if [[ $EUID -ne 0 ]]; then
-  echo "* Please run this script as root! (sudo)." 1>&2
+  echo "* This script must be executed with root privileges (sudo)." 1>&2
   exit 1
 fi
 
 # check for curl
 if ! [ -x "$(command -v curl)" ]; then
-  echo "* curl is not installed and required for script to work."
+  echo "* curl is required in order for this script to work."
   echo "* install using apt (Debian and derivatives) or yum/dnf (CentOS)"
   exit 1
 fi
@@ -80,10 +80,6 @@ output
 
 PANEL_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/install-panel.sh"
 
-IPV6_PANEL_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/ipv6-panel-install.sh"
-
-IPV6_WINGS_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/ipv6-wings-install.sh"
-
 WINGS_LATEST="$GITHUB_BASE_URL/$SCRIPT_VERSION/install-wings.sh"
 
 PANEL_CANARY="$GITHUB_BASE_URL/master/install-panel.sh"
@@ -98,10 +94,7 @@ while [ "$done" == false ]; do
 
     "Install panel with canary version of the script (the versions that lives in master, may be broken!)"
     "Install Wings with canary version of the script (the versions that lives in master, may be broken!)"
-    "Install both [3] and [4] on the same machine (wings script runs after panel)\n"
-    
-    "Install the panel(IPV6 ONLY SYSTEMS)"
-    "Install the wings(IPV6 ONLY SYSTEMS)"
+    "Install both [3] and [4] on the same machine (wings script runs after panel)"
   )
 
   actions=(
@@ -112,9 +105,6 @@ while [ "$done" == false ]; do
     "$PANEL_CANARY"
     "$WINGS_CANARY"
     "$PANEL_CANARY;$WINGS_CANARY"
-    
-    "$IPV6_PANEL_LATEST"
-    "$IPV6_WINGS_LATEST
   )
 
   output "What would you like to do?"
