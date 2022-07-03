@@ -1060,7 +1060,6 @@ main() {
     print_error "Installation aborted."
     exit 1
   fi
-}
 
 summary() {
   print_brake 62
