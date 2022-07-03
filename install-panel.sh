@@ -1047,6 +1047,8 @@ main() {
     else
       [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
     fi
+  
+  
   # summary
   summary
 
@@ -1060,6 +1062,7 @@ main() {
     print_error "Installation aborted."
     exit 1
   fi
+  }
 
 summary() {
   print_brake 62
