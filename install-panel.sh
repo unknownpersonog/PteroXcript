@@ -73,7 +73,7 @@ CONFIGURE_LETSENCRYPT=false
 
 # download URLs
 PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz"
-GITHUB_BASE_URL="https://raw.githubusercontent.com/unknownpersonog/pteroscript/$GITHUB_SOURCE"
+GITHUB_BASE_URL="https://raw.githubusercontent.com/unknownpersonog/PteroXcript/$GITHUB_SOURCE"
 
 # ufw firewall
 CONFIGURE_UFW=false
