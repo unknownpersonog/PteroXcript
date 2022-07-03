@@ -83,7 +83,7 @@ confirm() {
 
   echo -e -n "* I agree that this HTTPS request is performed (y/N): "
   read -r confirm
-  [[ "$confirm" =~ [Yy] ]] || (error "User did not agree" && exit 1)
+  [[ "$confirm" =~ [Yy] ]] || (error "User did not agree" && false)
 }
 
 dns_verify() {
@@ -98,8 +98,8 @@ main() {
   fqdn="$1"
   os="$2"
   dep_install
-  confirm
-  dns_verify
+  confirm && dns_verify
+  true
 }
 
 main "$1" "$2"
