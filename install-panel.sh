@@ -46,8 +46,8 @@ fi
 ########## Variables ############
 
 # versioning
-GITHUB_SOURCE="master"
-SCRIPT_RELEASE="canary"
+GITHUB_SOURCE="v1.0.1"
+SCRIPT_RELEASE="v1.0.1"
 
 FQDN=""
 
