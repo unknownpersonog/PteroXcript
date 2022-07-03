@@ -1024,7 +1024,7 @@ main() {
     read -r FQDN
     [ -z "$FQDN" ] && print_error "FQDN cannot be empty"
   done
-
+  
   # Check if SSL is available
   check_FQDN_SSL
 
@@ -1040,8 +1040,13 @@ main() {
   fi
 
   # verify FQDN if user has selected to assume SSL or configure Let's Encrypt
-  [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
-
+    echo -e -n "* Is the system IPv6 Only? (y/N): "
+    read -r IPV6
+    if [[ "$IPV6" =~ [Yy] ]]; then
+      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
+    else
+      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
+    
   # summary
   summary
 
