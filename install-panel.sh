@@ -823,7 +823,7 @@ letsencrypt() {
   esac
 
   # Obtain certificate
-  certbot --manual --redirect --preferred-challenges dns --no-eff-email --email "$email" -d "$FQDN" || FAILED=true
+  certbot certonly --manual --redirect --preferred-challenges dns --no-eff-email --email "$email" -d "$FQDN" || FAILED=true
 
   # Check if it succeded
   if [ ! -d "/etc/letsencrypt/live/$FQDN/" ] || [ "$FAILED" == true ]; then
