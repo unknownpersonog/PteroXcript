@@ -1046,7 +1046,7 @@ main() {
       [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
     else
       [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && ash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
-    
+    fi
   # summary
   summary
 
