@@ -778,9 +778,9 @@ firewall_ufw() {
   echo "* Opening port 22 (SSH), 80 (HTTP) and 443 (HTTPS)"
 
   # pointing to /dev/null silences the command output
-  ufw allow ssh >/dev/null
-  ufw allow http >/dev/null
-  ufw allow https >/dev/null
+  ufw allow 22 >/dev/null
+  ufw allow 80 >/dev/null
+  ufw allow 443 >/dev/null
 
   ufw --force enable
   ufw --force reload
