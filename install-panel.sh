@@ -1043,9 +1043,9 @@ main() {
     echo -e -n "* Is the system IPv6 Only? (y/N): "
     read -r IPV6
     if [[ "$IPV6" =~ [Yy] ]]; then
-      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && bash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
+      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && bash <(curl -sL $GITHUB_BASE_URL/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
     else
-      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && bash <(curl -s $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
+      [ "$CONFIGURE_LETSENCRYPT" == true ] || [ "$ASSUME_SSL" == true ] && bash <(curl -sL $GITHUB_BASE_URL/lib/verify-fqdn.sh) "$FQDN" "$OS"
     fi
   
   
