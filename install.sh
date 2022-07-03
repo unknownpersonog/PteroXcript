@@ -28,7 +28,7 @@ set -e
 #                                                                           #
 #############################################################################
 
-SCRIPT_VERSION="v0.11.0"
+SCRIPT_VERSION="v1.0"
 GITHUB_BASE_URL="https://raw.githubusercontent.com/unknownpersonog/PteroXcript"
 
 LOG_PATH="/var/log/pterodactyl-installer.log"
