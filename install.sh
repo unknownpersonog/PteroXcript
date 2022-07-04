@@ -59,22 +59,18 @@ error() {
   echo ""
 }
 
-intro() {
-echo -n $'\E[31m'
-echo $''
-echo $'  _______    _                         ____  ____                  _           _   '
-echo $' |_   __ \  / |_                      |_  _||_  _|                (_)         / |_ '
-echo $'   | |__) |`| |-'.---.  _ .--.   .--.   \ \  / /   .---.  _ .--.  __  _ .--. `| |-''
-echo $'   |  ___/  | | / /__\\[ `/'`\]/ .'`\ \  > `' <   / /'`\][ `/'`\][  |[ '/'`\ \| |  '
-echo $'  _| |_     | |,| \__., | |    | \__. |_/ /'`\ \_ | \__.  | |     | | | \__/ || |, '
-echo $' |_____|    \__/ '.__.'[___]    '.__.'|____||____|'.___.'[___]   [___]| ;.__/ \__/ '
-echo $'                                                                      [__|          '
-
-for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-
-}
+cat << "EOF" 
+_____________                  ____  __            _____        _____ 
+___  __ \_  /____________________  |/ /_______________(_)_________  /_
+__  /_/ /  __/  _ \_  ___/  __ \_    /_  ___/_  ___/_  /___  __ \  __/
+_  ____// /_ /  __/  /   / /_/ /    | / /__ _  /   _  / __  /_/ / /_  
+/_/     \__/ \___//_/    \____//_/|_| \___/ /_/    /_/  _  .___/\__/  
+                                                        /_/           
+                                                        
+EOF
+                                                       
 execute() {
-  echo -e "\n\n* pterodactyl-installer $(date) \n\n" >>$LOG_PATH
+  echo -e "\n\n* PteroXcript $(date) \n\n" >>$LOG_PATH
 
   bash <(curl -s "$1") | tee -a $LOG_PATH
   [[ -n $2 ]] && execute "$2"
@@ -84,10 +80,9 @@ done=false
 
 output "Pterodactyl installation script @ $SCRIPT_VERSION"
 output
-output "Copyright (C) 2018 - 2022, Vilhelm Prytz, <vilhelm@prytznet.se>"
-output "https://github.com/vilhelmprytz/pterodactyl-installer"
+output "Made by vilhelmprytz. Modified and owned by UnknownGamer"
+output "https://github.com/vunknownpersonog/PteroXcript"
 output
-output "Sponsoring/Donations: https://github.com/vilhelmprytz/pterodactyl-installer?sponsor=1"
 output "This script is not associated with the official Pterodactyl Project."
 
 output
