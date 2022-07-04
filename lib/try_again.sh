@@ -2,6 +2,10 @@
 
 set -e
 
+output() {
+  echo "* $1"
+}
+
 dns_verify() {
   output "Resolving DNS for $fqdn"
   ip=$(curl -6 -sL $CHECKIP_URL)
