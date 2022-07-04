@@ -61,11 +61,19 @@ fail() {
   output "The DNS record ($dns_record) does not match your server IP. Please make sure the FQDN $fqdn is pointing to the IP of your server, $ip"
   output "If you are using Cloudflare, please disable the proxy or opt out from Let's Encrypt."
 
-  echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing)? (y/N): "
-  read -r override
+  echo -n "Try Again (Using N will skip the cetificate generation part): "
+  read -r try_again
+  
+  if [[ "$try_again" =~ [Yy] ]]; then
+     dns_verify
+  else
+       echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
+       read -r override
 
-  [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
-  return 0
+       [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
+       return 0
+    fi
+ 
 }
 
 dep_install() {
