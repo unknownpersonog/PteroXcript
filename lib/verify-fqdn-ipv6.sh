@@ -65,13 +65,14 @@ fail() {
   read -r try_again
   
   if [[ "$try_again" =~ [Yy] ]]; then
-      retry
-  fi
+      bash <(curl -s https://raw.githubusercontent.com/unknownpersonog/PteroXcript/master/lib/try_again.sh) $fqdn
+  else
   echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
   read -r override
 
   [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
   return 0
+  fi
 }
 
 dep_install() {
@@ -108,16 +109,5 @@ main() {
   true
 }
 
-retry() {
-  dns_reverify
-}
-
-dns_reverify() {
-  output "Resolving DNS for $fqdn"
-  ip=$(curl -6 -sL $CHECKIP_URL)
-  dns_record=$(dig +short @$DNS_SERVER "$fqdn" AAAA | tail -n1)
-  [ "${ip}" != "${dns_record}" ] && fail
-  output "DNS verified!"
-}
 
 main "$1" "$2"
