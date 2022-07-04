@@ -65,15 +65,13 @@ fail() {
   read -r try_again
   
   if [[ "$try_again" =~ [Yy] ]]; then
-     dns_verify
-  else
-       echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
-       read -r override
+     bash <(curl -sL https://raw.githubusercontent.com/unknownpersonog/PteroXcript/master/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
+  fi
+  echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
+  read -r override
 
-       [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
-       return 0
-    fi
- 
+  [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
+  return 0
 }
 
 dep_install() {
