@@ -1038,7 +1038,7 @@ main() {
     # If it's already true, this should be a no-brainer
     [ "$CONFIGURE_LETSENCRYPT" == false ] && ask_assume_ssl
   fi
-  if [[ "$CONFIGURE_LETSENCRYPT" == true ]; then
+  if [ "$CONFIGURE_LETSENCRYPT" == true ]; then
    [ "$ASSUME_SSL" == true ]
   fi
   # verify FQDN if user has selected to assume SSL or configure Let's Encrypt
