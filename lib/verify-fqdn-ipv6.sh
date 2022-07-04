@@ -65,7 +65,7 @@ fail() {
   read -r try_again
   
   if [[ "$try_again" =~ [Yy] ]]; then
-     bash <(curl -sL https://raw.githubusercontent.com/unknownpersonog/PteroXcript/master/lib/verify-fqdn-ipv6.sh) "$FQDN" "$OS"
+      retry
   fi
   echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
   read -r override
@@ -106,6 +106,10 @@ main() {
   dep_install
   confirm && dns_verify
   true
+}
+
+retry() {
+  dns_verify
 }
 
 main "$1" "$2"
