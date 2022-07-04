@@ -78,12 +78,13 @@ execute() {
 
 done=false
 
-output "Pterodactyl installation script @ $SCRIPT_VERSION"
+output "PteroXcript @ $SCRIPT_VERSION"
 output
-output "Made by vilhelmprytz. Modified and owned by UnknownGamer"
-output "https://github.com/vunknownpersonog/PteroXcript"
+output "Made by vilhelmprytz. Modified and owned by UnknownGamer/UnknownPersonOG"
+output "https://github.com/unknownpersonog/PteroXcript"
 output
 output "This script is not associated with the official Pterodactyl Project."
+output "If you encounter any error please DO NOT ask help in Pterodactyl Help Community."
 
 output
 
