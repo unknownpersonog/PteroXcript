@@ -63,15 +63,12 @@ fail() {
   echo -n "Try Again (Using N will skip the cetificate generation part): "
   read -r try_again
   
-  if [[ "$try_again" =~ [Yy] ]]; then
-     dns_verify
-  else
-       echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
+ 
+  echo -n "* Proceed anyways (your install will be broken if you do not know what you are doing, N will abort the install.)? (y/N): "
        read -r override
 
        [[ ! "$override" =~ [Yy] ]] && error "Invalid FQDN or DNS record" && exit 1
        return 0
-    fi
  
 }
 
