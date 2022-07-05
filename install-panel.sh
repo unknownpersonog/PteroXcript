@@ -46,8 +46,8 @@ fi
 ########## Variables ############
 
 # versioning
-GITHUB_SOURCE="v1.0.1"
-SCRIPT_RELEASE="v1.0.1"
+GITHUB_SOURCE="master"
+SCRIPT_RELEASE="canary"
 
 FQDN=""
 
@@ -68,7 +68,7 @@ user_password=""
 
 # Assume SSL, will fetch different config if true
 SSL_AVAILABLE=false
-ASSUME_SSL=false
+ASSUME_SSL=true
 CONFIGURE_LETSENCRYPT=false
 
 # download URLs
