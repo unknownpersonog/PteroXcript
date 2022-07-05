@@ -68,7 +68,7 @@ user_password=""
 
 # Assume SSL, will fetch different config if true
 SSL_AVAILABLE=false
-ASSUME_SSL=true
+ASSUME_SSL=false
 CONFIGURE_LETSENCRYPT=false
 
 # download URLs
@@ -847,7 +847,7 @@ letsencrypt() {
 configure_nginx() {
   echo "* Configuring nginx .."
 
-  if [ $ASSUME_SSL == true ] && [ $CONFIGURE_LETSENCRYPT == false ]; then
+  if [ $ASSUME_SSL == true ] && [ $CONFIGURE_LETSENCRYPT == true ]; then
     DL_FILE="nginx_ssl.conf"
   else
     DL_FILE="nginx.conf"
