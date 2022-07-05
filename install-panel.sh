@@ -46,8 +46,8 @@ fi
 ########## Variables ############
 
 # versioning
-GITHUB_SOURCE="master"
-SCRIPT_RELEASE="canary"
+GITHUB_SOURCE="v1.0.1"
+SCRIPT_RELEASE="v1.0.1"
 
 FQDN=""
 
@@ -847,7 +847,7 @@ letsencrypt() {
 configure_nginx() {
   echo "* Configuring nginx .."
 
-  if [ $ASSUME_SSL == true ] && [ $CONFIGURE_LETSENCRYPT == true ]; then
+  if [ $ASSUME_SSL == true ] && [ $CONFIGURE_LETSENCRYPT == false ]; then
     DL_FILE="nginx_ssl.conf"
   else
     DL_FILE="nginx.conf"
@@ -1038,7 +1038,7 @@ main() {
     # If it's already true, this should be a no-brainer
     [ "$CONFIGURE_LETSENCRYPT" == false ] && ask_assume_ssl
   fi
-  
+
   # verify FQDN if user has selected to assume SSL or configure Let's Encrypt
     echo -e -n "* Is the system IPv6 Only? (y/N): "
     read -r IPV6
